@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LSA Search Engine</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
     <h1>Latent Semantic Analysis (LSA) Search Engine</h1>
     <form id="search-form">
@@ -13,9 +15,18 @@
         <button type="submit">Search</button>
     </form>
 
-    <div id="results"></div>
-    <canvas id="similarity-chart"></canvas>
+    <div id="results">
+        <h2>Results</h2>
+        <!-- The search results will be appended here -->
+    </div>
 
+    <h2>Similarity Chart</h2>
+    <div class="chart-container">
+        <canvas id="similarity-chart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/static/main.js"></script>
 </body>
+
 </html>
