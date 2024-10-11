@@ -19,15 +19,18 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'  # Replace '3.x' with the required Python version
+          python-version: '3.9'  # Replace with the required Python version
 
       - name: Install dependencies
-        run: make install
+        run: |
+          python3 -m venv venv
+          venv/bin/pip install -r requirements.txt
+          ls -la venv  # List files in the venv to ensure it's created
 
       - name: Run the application
         run: |
-          make run &
-          sleep 10  # Adjust the time as needed to ensure the server starts up
-          
+          venv/bin/flask run --host=0.0.0.0 --port=3000 &
+          sleep 10  # Adjust as needed to ensure the server starts up
+
       - name: Verify server is running
-        run: curl --fail http://localhost:3000  # Ensure the server is running properly
+        run: curl --fail http://localhost:3000  # Check that the server is running properly
