@@ -19,7 +19,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.x'  # Replace '3.x' with the specific version you need
+          python-version: '3.x'  # Replace '3.x' with the required Python version
 
       - name: Install dependencies
         run: make install
@@ -28,3 +28,6 @@ jobs:
         run: |
           make run &
           sleep 10  # Adjust the time as needed to ensure the server starts up
+          
+      - name: Verify server is running
+        run: curl --fail http://localhost:3000  # Ensure the server is running properly
